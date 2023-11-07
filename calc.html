@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Простой калькулятор</title>
+    <script>
+        function вычислить() {
+            var число1 = parseFloat(document.getElementById('число1').value);
+            var число2 = parseFloat(document.getElementById('число2').value);
+            var оператор = document.getElementById('оператор').value;
+            var результат;
+
+            if (isNaN(число1) || isNaN(число2)) {
+                alert('Пожалуйста, введите числа для вычислений.');
+                return;
+            }
+
+            switch (оператор) {
+                case '+':
+                    результат = число1 + число2;
+                    break;
+                case '-':
+                    результат = число1 - число2;
+                    break;
+                case '*':
+                    результат = число1 * число2;
+                    break;
+                case '/':
+                    if (число2 === 0) {
+                        alert('Деление на ноль невозможно.');
+                        return;
+                    }
+                    результат = число1 / число2;
+                    break;
+                default:
+                    alert('Неверный оператор. Пожалуйста, используйте +, -, *, или /.');
+                    return;
+            }
+
+            document.getElementById('результат').innerHTML = 'Результат: ' + результат;
+        }
+    </script>
+</head>
+<body>
+    <h1>Простой калькулятор</h1>
+    <p>
+        <label for="число1">Число 1:</label>
+        <input type="text" id="число1">
+    </p>
+    <p>
+        <label for="оператор">Оператор (+, -, *, /):</label>
+        <input type="text" id="оператор">
+    </p>
+    <p>
+        <label for="число2">Число 2:</label>
+        <input type="text" id="число2">
+    </p>
+    <button onclick="вычислить()">Вычислить</button>
+    <p id="результат">Результат: </p>
+</body>
+</html>
